@@ -5,7 +5,7 @@ import useDebounce from "../hooks/useDebounce"
 
 const SearchInput = () => {
 
-    const { getCharactersByQuery, state, setState } = useContext(CharactersContext)
+    const { getCharacters, state, setState } = useContext(CharactersContext)
     const [ query, setQuery ] = useState("")
     const debounceSearch = useDebounce(query, 400)
 
@@ -15,7 +15,7 @@ const SearchInput = () => {
     }
     
     const fetchCharacters = async () => {
-        await getCharactersByQuery(debounceSearch)
+        await getCharacters(debounceSearch)
     }
     useEffect(() => {
         fetchCharacters()

@@ -10,12 +10,10 @@ const CharactersContainer = () => {
     const fetchCharacters = async () => {
         try {
             await getCharacters()
-            //setPages(char.info.pages)
         } catch (error) {
             console.log(error)
         }
     }
-    console.log(state)
     
     useEffect(()=>{
         fetchCharacters()

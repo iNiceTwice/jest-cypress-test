@@ -11,15 +11,11 @@ export const CharactersContext = createContext()
  
 export const CharactersProvider = ({children}) => {
 
+    const API = "https://rickandmortyapi.com/api/character"
     const [ state, setState ] = useState(initialState)
-
-    const getCharacters = async () => { 
-        const res = await axios.get(`https://rickandmortyapi.com/api/character/?page=${state.currentPage}`)
-        setState({ ...state, pages:res.data.info.pages, characters: res.data.results })
-    }
     
-    const getCharactersByQuery = async (query) => {
-        const res = await axios.get(`https://rickandmortyapi.com/api/character/?page=${state.currentPage}&name=${query}`)
+    const getCharacters = async (query) => {
+        const res = await axios.get(`${API}/?name=${query}&page=${state.currentPage}`)
         setState({ ...state, pages:res.data.info.pages, characters: res.data.results })
     }
 
@@ -27,7 +23,6 @@ export const CharactersProvider = ({children}) => {
         <CharactersContext.Provider
             value={{
                 getCharacters,
-                getCharactersByQuery,
                 state,
                 setState
             }}

@@ -17,7 +17,7 @@ const Pagination = ({ pages }) => {
             <div className="flex w-full lg:w-4/5 bg-slate-50 rounded-md justify-center py-2">
                 {
                     totalPages.map(( page, i )=>(
-                        <button onClick={() => handleClick( page ) } key={ i } className="mx-1">{ page }</button>
+                        <button className="hover:bg-sky-100 mx-1 px-1" onClick={() => handleClick( page ) } key={ i }>{ page }</button>
                     ))
                 }
             </div>
